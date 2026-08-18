@@ -1,0 +1,110 @@
+<mxfile host="app.diagrams.net" agent="Claude">
+  <diagram id="data_eng_pipeline_v3" name="Arquitectura Tuya - completo">
+    <mxGraphModel dx="1723" dy="948" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1450" pageHeight="700" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="e10" edge="1" parent="1" source="dq_results" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeColor=#6c8ebf;" target="powerbi" value="KPIs de calidad">
+          <mxGeometry relative="1" x="0.4376" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zone_onpremise" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;verticalAlign=top;align=left;spacingLeft=10;spacingTop=8;fontSize=13;fontStyle=1;dashed=1;" value="Sistemas origen &amp; ingesta (on-premise)" vertex="1">
+          <mxGeometry height="420" width="300" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_fabric" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;verticalAlign=top;align=left;spacingLeft=10;spacingTop=8;fontSize=13;fontStyle=1;dashed=1;" value="Microsoft Fabric (data lakehouse, calidad &amp; gobierno)" vertex="1">
+          <mxGeometry height="420" width="1080" x="340" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_cicd" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;verticalAlign=top;align=left;spacingLeft=10;spacingTop=8;fontSize=13;fontStyle=1;dashed=1;" value="CI/CD &amp; versionamiento (control del proceso)" vertex="1">
+          <mxGeometry height="160" width="1080" x="340" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="fuentes" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="Fuentes de datos:&#xa;PCO, TransUnion,&#xa;CRM, App móvil" vertex="1">
+          <mxGeometry height="90" width="120" x="60" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="spoon" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="Ingesta&#xa;Data pipelines / Spoon (Pentaho)" vertex="1">
+          <mxGeometry height="100" width="110" x="200" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="bronze" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" value="OneLake&#xa;Capa bronce&#xa;Datos crudos" vertex="1">
+          <mxGeometry height="90" width="110" x="370" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="spark" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" value="Fabric Data Engineering&#xa;(Notebooks / Spark)&#xa;Limpieza y estandarización" vertex="1">
+          <mxGeometry height="100" width="160" x="528" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="gate" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="Validación de calidad&#xa;(quality gate)&#xa;Completitud, formato E.164,&#xa;unicidad, duplicados" vertex="1">
+          <mxGeometry height="130" width="160" x="725" y="135" as="geometry" />
+        </mxCell>
+        <mxCell id="silver_gold" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="OneLake&#xa;Capa plata/oro&#xa;Dataset confiable + histórico&#xa;(Delta time travel)" vertex="1">
+          <mxGeometry height="100" width="150" x="970" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="powerbi" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="Power BI (DirectLake)&#xa;Dashboard de veeduría&#xa;y KPIs de calidad" vertex="1">
+          <mxGeometry height="100" width="150" x="1220" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="cuarentena" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" value="Dead Letter Queue&#xa;(teléfonos inválidos)" vertex="1">
+          <mxGeometry height="90" width="130" x="740" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="dq_results" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="Tabla de resultados de calidad&#xa;(dq_results)&#xa;TODAS las métricas por corrida,&#xa;no solo los rechazos" vertex="1">
+          <mxGeometry height="90" width="150" x="990" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="purview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" value="Microsoft Purview&#xa;Catálogo y linaje de datos&#xa;(de dónde vino, qué le pasó)" vertex="1">
+          <mxGeometry height="90" width="150" x="1150" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="ci_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" value="CI&#xa;Pull request&#xa;Tests automáticos (unitarios + calidad)" vertex="1">
+          <mxGeometry height="70" width="280" x="520" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="cd_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" value="CD&#xa;Despliegue controlado&#xa;Dev → Staging → Prod&#xa;(Fabric Deployment Pipelines)" vertex="1">
+          <mxGeometry height="70" width="280" x="850" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="fuentes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="spoon">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="spoon" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="bronze">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="bronze" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="spark">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="spark" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="gate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="gate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;" target="silver_gold" value="pasa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="gate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;" target="cuarentena" value="falla">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="silver_gold" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="powerbi">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="gate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;fontSize=9;strokeColor=#6c8ebf;" target="dq_results" value="&lt;div&gt;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;registra resultado&lt;/span&gt;&lt;/div&gt;(toda corrida)">
+          <mxGeometry relative="1" x="0.493" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="cuarentena" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=9;" target="dq_results" value="cuenta rechazos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="silver_gold" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;fontSize=9;strokeColor=#999999;" target="purview" value="linaje">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1200" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="ci_box" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="cd_box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="cd_box" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;fontSize=10;strokeColor=#666666;" target="spark" value="despliega">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="cd_box" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;fontSize=10;strokeColor=#666666;" target="spoon" value="versiona / despliega">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="990" y="620" />
+              <mxPoint x="255" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
